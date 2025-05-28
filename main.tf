@@ -1,12 +1,3 @@
-resource "random_pet" "suffix" {
-  separator = ""
-}
-
-locals {
-  random_suffix = var.create_random_suffix ? "${var.website_name}-${random_pet.suffix.id}" : var.website_name
-  name_with_env = "${local.random_suffix}-${var.environment}"
-}
-
 resource "azurerm_resource_group" "rg" {
   name     = var.resource_group_name
   location = var.location
@@ -19,7 +10,7 @@ resource "azurerm_storage_account" "website" {
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
 
-  name = local.name_with_env
+  name = var.website_name
 
   account_tier             = "Standard"
   account_replication_type = "LRS"

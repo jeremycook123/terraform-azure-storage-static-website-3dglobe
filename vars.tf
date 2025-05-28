@@ -10,21 +10,9 @@ variable "resource_group_name" {
   type = string
 }
 
-variable "environment" {
-  description = "Environment bucket resides in"
-  type        = string
-  default     = "prod"
-}
-
 variable "location" {
   type    = string
   default = "eastus"
-}
-
-variable "create_random_suffix" {
-  description = "Add random suffix to bucket name"
-  type        = bool
-  default     = false
 }
 
 variable "website_name" {
