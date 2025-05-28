@@ -17,7 +17,12 @@ variable "location" {
 
 variable "website_name" {
   type        = string
-  description = "value for the storage account name, must be globally unique"
+  description = "Value for the storage account name, must be globally unique. Only lowercase letters and numbers, 3–24 characters."
+
+  validation {
+    condition     = can(regex("^[a-z0-9]{3,24}$", var.website_name))
+    error_message = "The website_name must be 3–24 characters long and contain only lowercase letters and numbers."
+  }
 }
 
 variable "tags" {
