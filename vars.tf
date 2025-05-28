@@ -19,3 +19,12 @@ variable "website_name" {
   type        = string
   description = "value for the storage account name, must be globally unique"
 }
+
+variable "tags" {
+  type        = map(string)
+  description = "tags for the resources"
+  default = {
+    environment = "dev"
+    project     = "static-website"
+  }
+}

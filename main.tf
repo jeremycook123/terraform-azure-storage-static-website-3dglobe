@@ -15,6 +15,8 @@ resource "azurerm_storage_account" "website" {
   account_tier             = "Standard"
   account_replication_type = "LRS"
   account_kind             = "StorageV2"
+
+  tags = var.tags
 }
 
 resource "azurerm_storage_account_static_website" "website" {
