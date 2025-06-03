@@ -16,7 +16,7 @@ provider "azurerm" {
 
 module "globe" {
   source  = "jeremycook123/storage-static-website-3dglobe/azure"
-  version = "~> 1.0"
+  version = ">= 1.0.0"
 
   resource_group_name = var.rg_name
   website_name        = var.website_name
