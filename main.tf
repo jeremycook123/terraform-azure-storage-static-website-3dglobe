@@ -10,6 +10,7 @@ resource "azurerm_storage_account" "website" {
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
 
+  # must be UNIQUE across the entire Azure service, not just within the resource group.
   name = var.website_name
 
   account_tier             = "Standard"
