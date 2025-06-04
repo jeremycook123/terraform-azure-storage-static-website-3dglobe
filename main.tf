@@ -39,11 +39,26 @@ resource "azurerm_storage_blob" "index_html" {
 }
 
 resource "azurerm_storage_blob" "globe_js" {
+  count                  = var.rotate_globe ? 0 : 1
   name                   = "globe.js"
   storage_account_name   = azurerm_storage_account.website.name
   storage_container_name = "$web"
   type                   = "Block"
   source                 = "${path.module}/website/globe.js"
+  content_type           = "text/javascript"
+
+  depends_on = [
+    azurerm_storage_account_static_website.website
+  ]
+}
+
+resource "azurerm_storage_blob" "globe_js_rotate" {
+  count                  = var.rotate_globe ? 1 : 0
+  name                   = "globe.js"
+  storage_account_name   = azurerm_storage_account.website.name
+  storage_container_name = "$web"
+  type                   = "Block"
+  source                 = "${path.module}/website/globe.rotate.js"
   content_type           = "text/javascript"
 
   depends_on = [
