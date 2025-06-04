@@ -276,8 +276,15 @@ function animate() {
 }
 
 function render() {
-  rotation.x += (target.x - rotation.x) * 0.05;
-  rotation.y += (target.y - rotation.y) * 0.05;
+  var rotate = false;
+
+  if (rotate) {
+    rotation.x -= 0.001;
+  } else {
+    rotation.x += (target.x - rotation.x) * 0.05;
+    rotation.y += (target.y - rotation.y) * 0.05;
+  }
+
   distance += (distanceTarget - distance) * 0.05;
 
   camera.position.x = distance * Math.sin(rotation.x) * Math.cos(rotation.y);
