@@ -25,3 +25,9 @@ variable "tags" {
     project     = "static-website"
   }
 }
+
+variable "rotate_globe" {
+  type        = bool
+  description = "Flag to rotate the globe on the static website"
+  default     = false
+}
