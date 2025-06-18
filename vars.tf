@@ -25,9 +25,3 @@ variable "tags" {
     project     = "static-website"
   }
 }
-
-variable "rotate" {
-  type        = bool
-  description = "Set to true to rotate the globe. Defaults to false."
-  default     = false
-}
